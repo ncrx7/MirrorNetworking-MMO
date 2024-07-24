@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6949316218817903133}
   - component: {fileID: 2525576608343474313}
   - component: {fileID: 3944280556015006236}
+  - component: {fileID: 7105350942135706761}
   - component: {fileID: -1792330807999322396}
   - component: {fileID: 7884518980797644838}
   - component: {fileID: -527193523854850920}
@@ -115,6 +116,8 @@ MonoBehaviour:
   _playerAnimationManager: {fileID: 2613539820069119286}
   _playerInputManager: {fileID: 1071145117387968125}
   _playerObjectUIManager: {fileID: 95004735477274048}
+  _playerColorManager: {fileID: 7105350942135706761}
+  Canvas: {fileID: 0}
   playername: 
 --- !u!114 &7384863339818691347
 MonoBehaviour:
@@ -290,6 +293,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.50480485, y: 0.6428925}
   m_EdgeRadius: 0
+--- !u!114 &7105350942135706761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955017053092373674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee852c12f89c7e4eaaad35de31fd21b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  _spriteRenderer: {fileID: 2601983961273277757}
 --- !u!114 &-1792330807999322396
 MonoBehaviour:
   m_ObjectHideFlags: 0
