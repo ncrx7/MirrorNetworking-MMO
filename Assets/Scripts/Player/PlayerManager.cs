@@ -20,11 +20,11 @@ public class PlayerManager : NetworkBehaviour
     {
         base.OnStartClient();
 
-        if(isLocalPlayer)
+        if (isLocalPlayer)
             OnClientConnectToServer?.Invoke(this);
-        
+
         //NetworkIdentity networkIdentity = Canvas.GetComponent<NetworkIdentity>();
-       // networkIdentity.AssignClientAuthority(connectionToClient);
+        // networkIdentity.AssignClientAuthority(connectionToClient);
     }
 
     public PlayerAnimationManager GetPlayerAnimationManager()
@@ -57,15 +57,15 @@ public class PlayerManager : NetworkBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-                TestMessage msg = new TestMessage
-                {
-                    PlayerName = playername,
-                    PlayerHealth = 100
-                };
+            TestMessage msg = new TestMessage
+            {
+                PlayerName = playername,
+                PlayerHealth = 100
+            };
 
 
             NetworkManagerMMO.singleton.SendTestMessageToServer(msg);
-                
+
         }
 
     }
@@ -82,5 +82,16 @@ public class PlayerManager : NetworkBehaviour
     public void SaySomethingRpc(string txt)
     {
         Debug.Log($"Client name : {playername}");
+    }
+
+    [ServerCallback]
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("trigger on server with player and object");
+        if (other.TryGetComponent<IPortal>(out IPortal portal))
+        {
+            portal.ChangeScene(GetComponent<NetworkIdentity>());
+            Debug.Log("trigger with portal on server");
+        }
     }
 }
