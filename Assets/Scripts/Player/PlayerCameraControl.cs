@@ -29,7 +29,7 @@ public class PlayerCameraControl : MonoBehaviour
             return;
 
         Vector3 targetPosition = new Vector3(_targetObj.transform.position.x, _targetObj.transform.position.y, _targetObj.transform.position.z - _zCameraOffset);
-        transform.position = Vector3.Lerp(transform.position, targetPosition, 1 * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 2.5f * Time.deltaTime);
     }
 
     private void SetTargetObj(PlayerManager playerManager)
