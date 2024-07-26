@@ -51,6 +51,7 @@ public class ClientUIManager : NetworkBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         Debug.Log("started");
 
         foreach (KeyValuePair<ColorType, Button> colorButton in colorButtons)

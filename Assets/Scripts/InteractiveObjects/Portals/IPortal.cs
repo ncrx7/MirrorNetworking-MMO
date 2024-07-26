@@ -5,5 +5,5 @@ using Mirror;
 
 public interface IPortal
 {
-   void ChangeScene(NetworkIdentity networkIdentity);
+   void ChangeScene(NetworkIdentity networkIdentity, NetworkManagerMMO networkManagerMMO, GameObject player);
 }

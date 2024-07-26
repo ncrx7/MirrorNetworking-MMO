@@ -7,14 +7,21 @@ using static NetworkManagerMMO;
 
 public class PlayerManager : NetworkBehaviour
 {
+    [SerializeField] PlayerLocomotionManager _playerLocomotionManager;
     [SerializeField] PlayerAnimationManager _playerAnimationManager;
     [SerializeField] PlayerInputManager _playerInputManager;
     [SerializeField] PlayerObjectUIManager _playerObjectUIManager;
     [SerializeField] PlayerColorManager _playerColorManager;
+    [SerializeField] NetworkManagerMMO _networkManagerMMO;
     public GameObject Canvas;
     [SerializeField] string playername;
 
     public static Action<PlayerManager> OnClientConnectToServer;
+
+    private void Awake()
+    {
+        _networkManagerMMO = FindObjectOfType<NetworkManagerMMO>();
+    }
 
     public override void OnStartClient()
     {
@@ -90,7 +97,8 @@ public class PlayerManager : NetworkBehaviour
         Debug.Log("trigger on server with player and object");
         if (other.TryGetComponent<IPortal>(out IPortal portal))
         {
-            portal.ChangeScene(GetComponent<NetworkIdentity>());
+            _playerLocomotionManager.enabled = false;
+            portal.ChangeScene(GetComponent<NetworkIdentity>(), _networkManagerMMO, this.gameObject);
             Debug.Log("trigger with portal on server");
         }
     }
